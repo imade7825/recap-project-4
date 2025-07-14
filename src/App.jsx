@@ -1,16 +1,29 @@
-//import { useState } from "react";
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
+import React, { useState } from "react";
 import "./App.css";
-import ThemeCreator from "./components/ThemeCreator/ThemeCreator";
+import ThemeCreator from "./components/ThemeCreator";
+import ThemeForm from "./components/ThemeForm";
+import themesDB from "./data/db";
+import { v4 as uuid } from "uuid";
+import "./styles/ThemeCreator.css";
 
 function App() {
-  // const [count, setCount] = useState(0)
+  //Initial state with themes from db
+  const [themes, setThemes] = useState(themesDB);
 
+  // insert a new thems to the list
+  const handleAddTehme = (newTheme) => {
+    const themeWithId = {...newTheme, id: uuid()}
+    setThemes((prev) => [themeWithId, ...prev]);
+  };
   return (
-    <>
-      <ThemeCreator />
-    </>
+    <div className="App">
+      <h2>Theme Creator</h2>
+      {/* Show the formular */}
+      <ThemeForm onAddTheme={handleAddTehme} />
+
+      {/* Show theme list */}
+      <ThemeCreator themes={themes} />
+    </div>
   );
 }
 

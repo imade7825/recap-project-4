@@ -1,5 +1,5 @@
 import React from "react";
-import "./ThemeCreator.css";
+import "../styles/ThemeCreator.css";
 
 const ThemeDetail = ({ theme }) => {
   return (

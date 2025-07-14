@@ -1,7 +1,9 @@
 import { useState } from "react";
-import "./ThemeCreator.css";
+import "../styles/ThemeCreator.css";
+
 import ThemPreview from "./ThemePreview";
 import ThemeDetail from "./ThemeDetail";
+
 
 const Theme = ({ theme }) => {
   const [isExpanded, setIsExpanded] = useState(false);
