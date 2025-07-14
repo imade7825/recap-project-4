@@ -1,0 +1,82 @@
+.theme-creator {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+  border: 2px solid #000;
+  border-radius: 10px;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+.theme-creator h2 {
+  margin: 0 0 10px;
+  background: #d3d3d3;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+  width: 100%;
+  color: black;
+  font-family: cursive;
+}
+.theme-creator h3 {
+  margin: 0;
+  text-align: left;
+  width: 100%;
+  color: black;
+  font-family: cursive;
+}
+.color-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  margin: 10px 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #9b9696e4;
+  box-sizing: border-box;
+  min-height: 150px;
+  position: relative;
+}
+.text-container {
+  flex: 30%;
+  border-radius: 5px 0 0 5px;
+  position: relative;
+  font-family: cursive;
+  color: black;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.role-text {
+  margin: 0;
+  font-size: 1em;
+  padding: 2px;
+  position: static;
+  /* top: 5px;
+  left: 5px; */
+}
+.value-text {
+  margin: 0;
+  font-size: 0.8em;
+  position: static;
+  /* top: 35px;
+  left: 5px; */
+}
+
+.color-sample {
+  width: 70%;
+  height: 100%;
+  border-radius: 0 5px 5px 0;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  border-left: none;
+  box-sizing: border-box;
+  min-height: 150px;
+}
