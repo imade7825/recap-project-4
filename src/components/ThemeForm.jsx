@@ -23,7 +23,9 @@ const ThemeForm = ({ onAddTheme }) => {
     e.target.reset(); //Delete
   };
   return (
+   
     <form className="theme-form" onSubmit={handleSubmit}>
+         <h2 className="theme-form__title">Theme Creator</h2>
       {/* Input name */}
       <input
         type="text"

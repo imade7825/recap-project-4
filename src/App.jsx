@@ -17,7 +17,7 @@ function App() {
   };
   return (
     <div className="App">
-      <h2>Theme Creator</h2>
+      
       {/* Show the formular */}
       <ThemeForm onAddTheme={handleAddTehme} />
 
