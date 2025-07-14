@@ -1,21 +1,30 @@
 import React from "react";
 import "../styles/ThemeCreator.css";
 // import themes from "../data/db.js";
-import Theme from "./Theme.jsx";
-
-//const ThemeCreator = () => {
-// part 3
-// themes as prop
-const ThemeCreator = ({ themes }) => {
+import Theme from "./Theme";
+import "./ThemeDetail.jsx";
+// part 4
+const ThemeCreator = ({ themes, onDeleteTheme }) => {
   return (
     <div className="theme-creator">
-      {/* <h2>Theme Creator</h2> */}
       {themes.map((theme) => (
-        <Theme key={theme.id} theme={theme} />
+        <Theme key={theme.id} theme={theme} onDelete={onDeleteTheme} />
       ))}
     </div>
   );
 };
+// // part 3
+// // themes as prop
+// const ThemeCreator = ({ themes }) => {
+//   return (
+//     <div className="theme-creator">
+//       {/* <h2>Theme Creator</h2> */}
+//       {themes.map((theme) => (
+//         <Theme key={theme.id} theme={theme} />
+//       ))}
+//     </div>
+//   );
+// };
 
 // // part 2
 

@@ -42,3 +42,18 @@
   border-radius: 4px;
   margin-bottom: 20px;
 }
+
+.theme-delete-button{
+  background-color: #c62828;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2 ease;
+}
+
+.theme-delete-button:hover{
+  background-color: #b71c1c;
+}
