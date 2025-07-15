@@ -4,7 +4,6 @@ import "../styles/ThemeCreator.css";
 import ThemPreview from "./ThemePreview";
 import ThemeDetail from "./ThemeDetail";
 
-
 const Theme = ({ theme, onDelete }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -15,7 +14,7 @@ const Theme = ({ theme, onDelete }) => {
     <div onClick={toggleView} style={{ cursor: "pointer" }}>
       <ThemPreview theme={theme} isExpanded={isExpanded} />
       {/* {isExpanded && <ThemeDetail theme={theme} />} */}
-      {isExpanded && <ThemeDetail theme={theme} onDelete={onDelete}/>}
+      {isExpanded && <ThemeDetail theme={theme} onDelete={onDelete} />}
     </div>
   );
 };
