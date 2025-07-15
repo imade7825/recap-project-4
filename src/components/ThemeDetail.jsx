@@ -22,10 +22,9 @@ const ThemeDetail = ({ theme, onDelete }) => {
         {theme.colors.map((color, index) => (
           <article key={index} className="color-block">
             <span className="text-container">
-              {/* <div className="color-info-section"> */}
-                <ColorCard hex={color.value} name={color.name} />
-              {/* </div> */}
+              <ColorCard hex={color.value} name={color.name} />
               <div className="color-text-section">
+                <p className="role-text">{color.role}</p>
                 <p className="role-text">{color.name}</p>
                 <p className="value-text">{color.value}</p>
               </div>

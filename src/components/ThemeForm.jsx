@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { v4 as uuid } from "uuid";
 import "../styles/ThemeForm.css";
+import themesDB from "../data/db";
 
 const ThemeForm = ({ onAddTheme }) => {
   const nameInput = useRef();
@@ -20,17 +21,15 @@ const ThemeForm = ({ onAddTheme }) => {
     }
   };
 
+  // Role aus themesDB holen primary ... und an role abgeben unten im return
+  const selectedTheme = themesDB.find((t) => t.name === "Vivid Meadow"); // oder dynamisch per Auswahl
+  const roleList = selectedTheme ? selectedTheme.colors.map((c) => c.role) : [];
+
   const handleSubmit = async (e) => {
     e.preventDefault(); // Verhindert Seitenreload
 
     const name = nameInput.current.value.trim();
     if (!name) return; // Name is required
-
-    // //color infos
-    // const colors = colorInput.map((ref, i) => ({
-    //   role: `Color ${i + 1}`,
-    //   value: ref.current.value,
-    // }));
 
     // Fetch color names for all colors
     const colors = await Promise.all(
@@ -38,7 +37,8 @@ const ThemeForm = ({ onAddTheme }) => {
         const hex = ref.current.value;
         const colorName = await fetchColorName(hex);
         return {
-          role: `Color ${i + 1}`,
+          // role: `Color ${i + 1}`,
+          role: roleList[i],
           value: hex,
           name: colorName,
         };
@@ -69,7 +69,7 @@ const ThemeForm = ({ onAddTheme }) => {
             key={index}
             type="color"
             ref={ref}
-            defaultValue="#000000"
+            defaultValue="#d3d3d3"
             className="theme-form__colors-input"
           />
         ))}

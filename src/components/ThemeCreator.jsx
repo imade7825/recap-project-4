@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/ThemeCreator.css";
-// import themes from "../data/db.js";
-import Theme from "./Theme";
 import "./ThemeDetail.jsx";
+import ThemePreview from "./ThemePreview";
+import ThemeDetail from "./ThemeDetail";
 // part 4
 const ThemeCreator = ({ themes, onDeleteTheme }) => {
+  const [expandedId, setExpandedId] = useState(null);
+
+  const handleToggle = (id) => {
+    setExpandedId((prev) => (prev === id ? null : id));
+  };
   return (
     <div className="theme-creator">
       {themes.map((theme) => (
-        <Theme key={theme.id} theme={theme} onDelete={onDeleteTheme} />
+        <div key={theme.id} className="theme-wrapper">
+          <ThemePreview
+            theme={theme}
+            isExpanded={expandedId === theme.id}
+            onToggle={() => handleToggle(theme.id)} //  Hier wird übergeben
+          />
+          {expandedId === theme.id && (
+            <ThemeDetail theme={theme} onDelete={onDeleteTheme} />
+          )}
+        </div>
       ))}
     </div>
   );

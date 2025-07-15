@@ -28,12 +28,10 @@ const ColorCard = ({ hex }) => {
 
   return (
     <div className="color-card">
-      <div 
-        // className="color-block" 
+      <div
         style={{ backgroundColor: hex }}
         title={`${hex} - ${colorName}`}
       ></div>
-      {/* <div className="color-name">{colorName}</div> */}
     </div>
   );
 };

@@ -1,9 +1,7 @@
 .theme-form {
   background-color: #eee;
-  /* border: 1px solid #ccc; */
   padding: 1rem;
-  /* margin-bottom: 2rem; */
-  border-radius: 8px 8px 0 0;
+  border-radius: 10px 10px 0 0;
   width: 100%;
   box-sizing: border-box;
   display: flex;
@@ -11,19 +9,13 @@
 }
 
 .theme-form__title {
-  /* margin: 10px;
-  font-family: cursive;
-  font-size: 1.2rem;
-  color: black; */
   margin: 0 0 10px;
   background: #d3d3d3;
-  /* padding: 15px; */
   border-radius: 5px;
   text-align: center;
   width: 100%;
   color: black;
   font-family: cursive;
-  
 }
 
 /* .theme-form h3 {
@@ -32,11 +24,13 @@
 } */
 
 .theme-form__input {
-  width: 100%;
+  width: 50%;
   padding: 0.5rem;
   margin-bottom: 1rem;
   font-size: 1rem;
   box-sizing: border-box;
+  align-self: center;
+  text-align: center;
 }
 
 .theme-form__colors {
@@ -45,6 +39,8 @@
   margin-bottom: 1rem;
   flex-wrap: wrap;
   align-self: center;
+  
+  
 }
 
 /* Farbkästen */
@@ -52,20 +48,23 @@
   appearance: none;
   width: 48px;
   height: 48px;
-  border: 1px solid #000;
+  border: 1px solid #e5d4d4;
   border-radius: 4px;
   padding: 0;
   cursor: pointer;
+  
   
 }
 
 /* Chrome/Edge Fix für Color Picker */
 .theme-form__colors-input::-webkit-color-swatch-wrapper {
   padding: 0;
+  
 }
 .theme-form__colors-input::-webkit-color-swatch {
   border: none;
   border-radius: 4px;
+  
 }
 
 /* Submit Button */

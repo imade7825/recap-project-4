@@ -8,9 +8,12 @@ import { v4 as uuid } from "uuid";
 import "./styles/ThemeCreator.css";
 import "./components/ThemeDetail.jsx";
 
+
 function App() {
   //Initial state with themes from db
   //const [themes, setThemes] = useState(themesDB);
+
+  // part_5
   const [themes, setThemes] = useLocalStorageState("themes", {
     defaultValue: [],
   });
