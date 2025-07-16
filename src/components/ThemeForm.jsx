@@ -5,7 +5,7 @@ import themesDB from "../data/db";
 
 const ThemeForm = ({ onAddTheme, onSubmit, initialData }) => {
   const nameInput = useRef();
-  const colorInput = [useRef(), useRef(), useRef(), useRef()];
+  const colorInput =useRef([useRef(), useRef(), useRef(), useRef()]);
 
   const fetchColorName = async (hex) => {
     const hexValue = hex.replace("#", "");
@@ -26,15 +26,15 @@ const ThemeForm = ({ onAddTheme, onSubmit, initialData }) => {
     if (initialData) {
       nameInput.current.value = initialData.name;
       initialData.colors.forEach((color, i) => {
-        if (colorInput[i].current) {
-          colorInput[i].current.value = color.value;
+        if (colorInput.current[i].current) {
+          colorInput.current[i].current.value = color.value;
         }
       });
     }
-  }, [initialData, colorInput]);
+  }, [initialData]);
 
   // Role aus themesDB holen primary ... und an role abgeben unten im return
-  const selectedTheme = themesDB.find((t) => t.name === "Vivid Meadow"); // oder dynamisch per Auswahl
+  const selectedTheme = themesDB.find((t) => t.name === "Vivid Meadow"); 
   const roleList = selectedTheme ? selectedTheme.colors.map((c) => c.role) : [];
 
   const handleSubmit = async (e) => {
@@ -45,7 +45,7 @@ const ThemeForm = ({ onAddTheme, onSubmit, initialData }) => {
 
     // Fetch color names for all colors
     const colors = await Promise.all(
-      colorInput.map(async (ref, i) => {
+      colorInput.current.map(async (ref, i) => {
         const hex = ref.current.value;
         const colorName = await fetchColorName(hex);
         return {
@@ -65,7 +65,7 @@ const ThemeForm = ({ onAddTheme, onSubmit, initialData }) => {
     if (onSubmit) {
       onSubmit(newTheme);
     } else {
-      onAddTheme(newTheme); //Add new Theme to the App}
+      onAddTheme(newTheme); //Add new Theme to the App
       e.target.reset(); //Delete
     }
   };
@@ -83,7 +83,7 @@ const ThemeForm = ({ onAddTheme, onSubmit, initialData }) => {
 
       {/* color picker */}
       <div className="theme-form__colors">
-        {colorInput.map((ref, index) => (
+        {colorInput.current.map((ref, index) => (
           <input
             key={index}
             type="color"
