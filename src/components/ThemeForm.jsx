@@ -5,6 +5,8 @@ import themesDB from "../data/db";
 
 const ThemeForm = ({ onAddTheme, onSubmit, initialData }) => {
   const nameInput = useRef();
+  //useref benutzen um das Array zu speichern, 
+  // ohne neue Refs zu erzeugen bei jedem render
   const colorInput =useRef([useRef(), useRef(), useRef(), useRef()]);
 
   const fetchColorName = async (hex) => {
