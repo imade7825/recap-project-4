@@ -32,7 +32,7 @@
 .theme-colors {
   display: flex;
   gap: 24px;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
 }
 
 .color-box {
@@ -41,6 +41,13 @@
   border: 1px solid #000;
   border-radius: 4px;
   margin-bottom: 20px;
+}
+
+.theme-buttons{
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
 .theme-delete-button{

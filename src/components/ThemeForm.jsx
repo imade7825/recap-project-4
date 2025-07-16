@@ -31,7 +31,7 @@ const ThemeForm = ({ onAddTheme, onSubmit, initialData }) => {
         }
       });
     }
-  }, [initialData]);
+  }, [initialData, colorInput]);
 
   // Role aus themesDB holen primary ... und an role abgeben unten im return
   const selectedTheme = themesDB.find((t) => t.name === "Vivid Meadow"); // oder dynamisch per Auswahl
@@ -49,7 +49,6 @@ const ThemeForm = ({ onAddTheme, onSubmit, initialData }) => {
         const hex = ref.current.value;
         const colorName = await fetchColorName(hex);
         return {
-          // role: `Color ${i + 1}`,
           role: roleList[i],
           value: hex,
           name: colorName,
@@ -96,12 +95,11 @@ const ThemeForm = ({ onAddTheme, onSubmit, initialData }) => {
       </div>
 
       {/* Send */}
-      <div className="theme-previw">
-      <button type="submit" className="theme-form__submit">
-        {initialData ? "Save Changes" : "Add Theme"}
-      </button>
+      <div className="theme-preview">
+        <button type="submit" className="theme-form__submit">
+          {initialData ? "Save Changes" : "Add Theme"}
+        </button>
       </div>
-      
     </form>
   );
 };

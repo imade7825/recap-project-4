@@ -10,10 +10,8 @@ const ThemeDetail = ({ theme, onDelete, onEdit, onBack }) => {
       {/* Titel and delete */}
       <div className="theme-header">
         <h3 className="theme-title">{theme.name}</h3>
-        <button
-          className="theme-edit-button"
-          onClick={onEdit}
-        >
+        <div className= "theme-buttons">
+        <button className="theme-edit-button" onClick={onEdit}>
           Edit
         </button>
         <button
@@ -22,12 +20,10 @@ const ThemeDetail = ({ theme, onDelete, onEdit, onBack }) => {
         >
           Delete
         </button>
-        <button
-          className="theme-back-button"
-          onClick={onBack}
-        >
+        <button className="theme-back-button" onClick={onBack}>
           Back
         </button>
+        </div>
       </div>
 
       <div className="theme-colors">
@@ -35,11 +31,9 @@ const ThemeDetail = ({ theme, onDelete, onEdit, onBack }) => {
           <article key={index} className="color-block">
             <span className="text-container">
               <ColorCard hex={color.value} name={color.name} />
-              <div className="color-text-section">
-                <p className="role-text">{color.role}</p>
-                <p className="role-text">{color.name}</p>
-                <p className="value-text">{color.value}</p>
-              </div>
+              <p className="role-text">{color.role}</p>
+              <p className="role-text">{color.name}</p>
+              <p className="value-text">{color.value}</p>
             </span>
             <span
               className="color-sample"

@@ -19,7 +19,7 @@ const ThemeCreator = ({ themes, onDeleteTheme, onEditTheme }) => {
       {themes?.map((theme) => {
         const state = displayStates[theme.id] || "preview";
         return (
-          <div key={theme.id} className="theme-creator">
+          <div key={theme.id}>
             {state === "preview" && (
               <ThemePreview
                 theme={theme}
