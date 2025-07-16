@@ -1,9 +1,9 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { v4 as uuid } from "uuid";
 import "../styles/ThemeForm.css";
 import themesDB from "../data/db";
 
-const ThemeForm = ({ onAddTheme }) => {
+const ThemeForm = ({ onAddTheme, onSubmit, initialData }) => {
   const nameInput = useRef();
   const colorInput = [useRef(), useRef(), useRef(), useRef()];
 
@@ -20,6 +20,18 @@ const ThemeForm = ({ onAddTheme }) => {
       return "Unknown";
     }
   };
+
+  // Um Werte zu setzen
+  useEffect(() => {
+    if (initialData) {
+      nameInput.current.value = initialData.name;
+      initialData.colors.forEach((color, i) => {
+        if (colorInput[i].current) {
+          colorInput[i].current.value = color.value;
+        }
+      });
+    }
+  }, [initialData]);
 
   // Role aus themesDB holen primary ... und an role abgeben unten im return
   const selectedTheme = themesDB.find((t) => t.name === "Vivid Meadow"); // oder dynamisch per Auswahl
@@ -46,9 +58,17 @@ const ThemeForm = ({ onAddTheme }) => {
     );
 
     //New Theme object
-    const newTheme = { id: uuid(), name, colors };
-    onAddTheme(newTheme); //Add new Theme to the App}
-    e.target.reset(); //Delete
+    const newTheme = {
+      id: initialData?.id || uuid(),
+      name,
+      colors,
+    };
+    if (onSubmit) {
+      onSubmit(newTheme);
+    } else {
+      onAddTheme(newTheme); //Add new Theme to the App}
+      e.target.reset(); //Delete
+    }
   };
   return (
     <form className="theme-form" onSubmit={handleSubmit}>
@@ -76,9 +96,12 @@ const ThemeForm = ({ onAddTheme }) => {
       </div>
 
       {/* Send */}
+      <div className="theme-previw">
       <button type="submit" className="theme-form__submit">
-        Add Theme
+        {initialData ? "Save Changes" : "Add Theme"}
       </button>
+      </div>
+      
     </form>
   );
 };

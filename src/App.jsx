@@ -8,10 +8,18 @@ import { v4 as uuid } from "uuid";
 import "./styles/ThemeCreator.css";
 import "./components/ThemeDetail.jsx";
 
-
 function App() {
   //Initial state with themes from db
   //const [themes, setThemes] = useState(themesDB);
+
+  // part_6
+  const handleEditTheme = (updatedTheme) => {
+    setThemes((prev) => 
+      prev.map((theme) =>
+        theme.id === updatedTheme.id ? updatedTheme : theme
+      )
+    );
+  };
 
   // part_5
   const [themes, setThemes] = useLocalStorageState("themes", {
@@ -35,7 +43,12 @@ function App() {
 
       {/* Show theme list */}
       {/* <ThemeCreator themes={themes} /> */}
-      <ThemeCreator themes={themes} onDeleteTheme={handleDeleteTheme} />
+      <ThemeCreator
+        themes={themes}
+        onAddTheme={handleAddTheme}
+        onDeleteTheme={handleDeleteTheme}
+        onEditTheme={handleEditTheme}
+      />
     </div>
   );
 }

@@ -4,17 +4,29 @@ import "../styles/ThemePreview.css";
 import ColorCard from "./ColorCard";
 // import themesDB from "../data/db";
 
-const ThemeDetail = ({ theme, onDelete }) => {
+const ThemeDetail = ({ theme, onDelete, onEdit, onBack }) => {
   return (
     <div className="theme-detail">
       {/* Titel and delete */}
       <div className="theme-header">
         <h3 className="theme-title">{theme.name}</h3>
         <button
+          className="theme-edit-button"
+          onClick={onEdit}
+        >
+          Edit
+        </button>
+        <button
           className="theme-delete-button"
           onClick={() => onDelete(theme.id)}
         >
           Delete
+        </button>
+        <button
+          className="theme-back-button"
+          onClick={onBack}
+        >
+          Back
         </button>
       </div>
 

@@ -32,7 +32,7 @@
 .theme-colors {
   display: flex;
   gap: 24px;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 .color-box {
@@ -55,5 +55,35 @@
 }
 
 .theme-delete-button:hover{
+  background-color: #b71c1c;
+}
+
+.theme-edit-button{
+  background-color: #c62828;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2 ease;
+}
+
+.theme-edit-button:hover{
+  background-color: #b71c1c;
+}
+
+.theme-back-button{
+  background-color: #c62828;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2 ease;
+}
+
+.theme-back-button:hover{
   background-color: #b71c1c;
 }

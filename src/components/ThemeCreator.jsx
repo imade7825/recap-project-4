@@ -3,30 +3,77 @@ import "../styles/ThemeCreator.css";
 import "./ThemeDetail.jsx";
 import ThemePreview from "./ThemePreview";
 import ThemeDetail from "./ThemeDetail";
+import ThemeForm from "./ThemeForm.jsx";
 // part 4
-const ThemeCreator = ({ themes, onDeleteTheme }) => {
-  const [expandedId, setExpandedId] = useState(null);
+const ThemeCreator = ({ themes, onDeleteTheme, onEditTheme }) => {
+  const [displayStates, setDisplayStates] = useState({});
 
-  const handleToggle = (id) => {
-    setExpandedId((prev) => (prev === id ? null : id));
+  const handleDispalyChange = (id, newState) => {
+    setDisplayStates((prev) => ({
+      ...prev,
+      [id]: prev[id] === newState ? "preview" : newState,
+    }));
   };
   return (
     <div className="theme-creator">
-      {themes.map((theme) => (
-        <div key={theme.id} className="theme-wrapper">
-          <ThemePreview
-            theme={theme}
-            isExpanded={expandedId === theme.id}
-            onToggle={() => handleToggle(theme.id)} //  Hier wird übergeben
-          />
-          {expandedId === theme.id && (
-            <ThemeDetail theme={theme} onDelete={onDeleteTheme} />
-          )}
-        </div>
-      ))}
+      {themes?.map((theme) => {
+        const state = displayStates[theme.id] || "preview";
+        return (
+          <div key={theme.id} className="theme-creator">
+            {state === "preview" && (
+              <ThemePreview
+                theme={theme}
+                isExpanded={false}
+                onToggle={() => handleDispalyChange(theme.id, "details")}
+              />
+            )}
+            {state === "details" && (
+              <ThemeDetail
+                theme={theme}
+                onDelete={onDeleteTheme}
+                onEdit={() => handleDispalyChange(theme.id, "edit")}
+                onBack={() => handleDispalyChange(theme.id, "preview")}
+              />
+            )}
+            {state === "edit" && (
+              <ThemeForm
+                initialData={theme}
+                onSubmit={(updated) => {
+                  if (onEditTheme) {
+                    onEditTheme(updated);
+                    handleDispalyChange(theme.id, "details");
+                  } else {
+                    console.error("onEditTheme is not defined");
+                  }
+                }}
+              />
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 };
+export default ThemeCreator;
+
+// <div key={theme.id} className="theme-wrapper">
+//   <ThemePreview
+//     theme={theme}
+//     isExpanded={expandedId === theme.id}
+//     onToggle={() => handleToggle(theme.id)} //  Hier wird übergeben
+//   />
+//   {expandedId === theme.id && (
+//     <ThemeDetail
+//       theme={theme}
+//       onDelete={onDeleteTheme}
+//       onEditTheme={handleEditTheme}
+//     />
+//   )}
+// </div>
+//   ))}
+// </div>
+// );
+// };
 // // part 3
 // // themes as prop
 // const ThemeCreator = ({ themes }) => {
@@ -68,5 +115,3 @@ const ThemeCreator = ({ themes, onDeleteTheme }) => {
 //   ))}
 // </div>
 //};
-
-export default ThemeCreator;
