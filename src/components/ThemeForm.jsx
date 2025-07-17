@@ -5,10 +5,12 @@ import themesDB from "../data/db";
 
 const ThemeForm = ({ onAddTheme, onSubmit, initialData }) => {
   const nameInput = useRef();
-  //useref benutzen um das Array zu speichern, 
-  // ohne neue Refs zu erzeugen bei jedem render
-  const colorInput =useRef([useRef(), useRef(), useRef(), useRef()]);
 
+  //useref benutzen um das Array zu speichern,
+  // ohne neue Refs zu erzeugen bei jedem render
+  const colorInput = useRef([useRef(), useRef(), useRef(), useRef()]);
+
+  //hilfsfunktion um farbe zu namen konvertieren
   const fetchColorName = async (hex) => {
     const hexValue = hex.replace("#", "");
     try {
@@ -23,7 +25,7 @@ const ThemeForm = ({ onAddTheme, onSubmit, initialData }) => {
     }
   };
 
-  // Um Werte zu setzen
+  // initialdaten laden für bearbeitung
   useEffect(() => {
     if (initialData) {
       nameInput.current.value = initialData.name;
@@ -35,8 +37,8 @@ const ThemeForm = ({ onAddTheme, onSubmit, initialData }) => {
     }
   }, [initialData]);
 
-  // Role aus themesDB holen primary ... und an role abgeben unten im return
-  const selectedTheme = themesDB.find((t) => t.name === "Vivid Meadow"); 
+  // Role aus themesDB holen primary ...
+  const selectedTheme = themesDB.find((t) => t.name === "");
   const roleList = selectedTheme ? selectedTheme.colors.map((c) => c.role) : [];
 
   const handleSubmit = async (e) => {
@@ -65,10 +67,10 @@ const ThemeForm = ({ onAddTheme, onSubmit, initialData }) => {
       colors,
     };
     if (onSubmit) {
-      onSubmit(newTheme);
+      onSubmit(newTheme); // for edit
     } else {
       onAddTheme(newTheme); //Add new Theme to the App
-      e.target.reset(); //Delete
+      e.target.reset(); //formular leeren
     }
   };
   return (
@@ -78,6 +80,7 @@ const ThemeForm = ({ onAddTheme, onSubmit, initialData }) => {
       <input
         type="text"
         ref={nameInput}
+        id="theme-name"
         placeholder="Theme name"
         required
         className="theme-form__input"
@@ -90,6 +93,8 @@ const ThemeForm = ({ onAddTheme, onSubmit, initialData }) => {
             key={index}
             type="color"
             ref={ref}
+            name={`color-${index}`}
+            id={`color-${index}`}
             defaultValue="#d3d3d3"
             className="theme-form__colors-input"
           />
@@ -97,11 +102,9 @@ const ThemeForm = ({ onAddTheme, onSubmit, initialData }) => {
       </div>
 
       {/* Send */}
-      <div className="theme-preview">
-        <button type="submit" className="theme-form__submit">
-          {initialData ? "Save Changes" : "Add Theme"}
-        </button>
-      </div>
+      <button type="submit" className="theme-form__submit">
+        {initialData ? "Save Changes" : "Add Theme"}
+      </button>
     </form>
   );
 };

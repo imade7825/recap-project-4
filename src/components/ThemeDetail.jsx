@@ -1,9 +1,8 @@
 import React from "react";
-import "../styles/ThemeCreator.css";
-import "../styles/ThemePreview.css";
 import ColorCard from "./ColorCard";
 import { IconArrowUp, IconArrowDown } from "@tabler/icons-react";
-// import themesDB from "../data/db";
+import "../styles/ThemeCreator.css";
+import "../styles/ThemePreview.css";
 
 const ThemeDetail = ({ theme, onDelete, onEdit, onToggle }) => {
   return (

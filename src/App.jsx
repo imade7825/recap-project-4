@@ -3,23 +3,18 @@ import useLocalStorageState from "use-local-storage-state";
 import "./App.css";
 import ThemeCreator from "./components/ThemeCreator";
 import ThemeForm from "./components/ThemeForm";
-//import themesDB from "./data/db";
 import { v4 as uuid } from "uuid";
-import "./styles/ThemeCreator.css";
-import "./components/ThemeDetail.jsx";
 
 function App() {
-  //Initial state with themes from db
-  //const [themes, setThemes] = useState(themesDB);
-
-  // part_6
+  
+  // edit a theme
   const handleEditTheme = (updatedTheme) => {
     setThemes((prev) =>
       prev.map((theme) => (theme.id === updatedTheme.id ? updatedTheme : theme))
     );
   };
 
-  // part_5
+  // store edited theme
   const [themes, setThemes] = useLocalStorageState("themes", {
     defaultValue: [],
   });
