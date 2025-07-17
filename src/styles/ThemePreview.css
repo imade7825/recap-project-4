@@ -11,7 +11,6 @@
 
 .theme-header {
   display: flex;
-  
   justify-content: space-between;
   align-items: center;
 }
@@ -19,7 +18,7 @@
 .theme-title {
   margin: 0;
   font-family: cursive;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 }
 
 .theme-toggle-raw {
@@ -46,8 +45,8 @@
 .theme-buttons{
   display: flex;
   gap: 10px;
-  flex-wrap: nowrap;
-  align-items: center;
+  /* flex-wrap: nowrap; */
+  
 }
 
 .theme-delete-button{
@@ -77,20 +76,5 @@
 }
 
 .theme-edit-button:hover{
-  background-color: #b71c1c;
-}
-
-.theme-back-button{
-  background-color: #c62828;
-  color: white;
-  border: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.2 ease;
-}
-
-.theme-back-button:hover{
   background-color: #b71c1c;
 }
