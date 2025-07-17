@@ -1,12 +1,10 @@
-//import React, { useState } from "react";
 import useLocalStorageState from "use-local-storage-state";
-import "./App.css";
 import ThemeCreator from "./components/ThemeCreator";
 import ThemeForm from "./components/ThemeForm";
 import { v4 as uuid } from "uuid";
+import "./App.css";
 
 function App() {
-  
   // edit a theme
   const handleEditTheme = (updatedTheme) => {
     setThemes((prev) =>

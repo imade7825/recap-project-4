@@ -1,4 +1,3 @@
-import React from "react";
 import ColorCard from "./ColorCard";
 import { IconArrowUp, IconArrowDown } from "@tabler/icons-react";
 import "../styles/ThemeCreator.css";

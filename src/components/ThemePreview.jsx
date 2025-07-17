@@ -1,6 +1,5 @@
 import { IconArrowUp, IconArrowDown } from "@tabler/icons-react";
 import "../styles/ThemePreview.css";
-import ThemeCreator from "./ThemeCreator";
 const ThemePreview = ({ theme, isExpanded,onToggle }) => {
   return (
     <div className="them-preview">

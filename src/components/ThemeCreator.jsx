@@ -36,6 +36,7 @@ const ThemeCreator = ({ themes, onDeleteTheme, onEditTheme }) => {
                 onToggle={() => handleDispalyChange(theme.id, "preview")}
               />
             )}
+          
             {state === "edit" && (
               <ThemeForm
                 initialData={theme}
