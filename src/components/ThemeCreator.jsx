@@ -32,7 +32,7 @@ const ThemeCreator = ({ themes, onDeleteTheme, onEditTheme }) => {
                 theme={theme}
                 onDelete={onDeleteTheme}
                 onEdit={() => handleDispalyChange(theme.id, "edit")}
-                onBack={() => handleDispalyChange(theme.id, "preview")}
+                onToggle={() => handleDispalyChange(theme.id, "preview")}
               />
             )}
             {state === "edit" && (

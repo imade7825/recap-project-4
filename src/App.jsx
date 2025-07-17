@@ -14,10 +14,8 @@ function App() {
 
   // part_6
   const handleEditTheme = (updatedTheme) => {
-    setThemes((prev) => 
-      prev.map((theme) =>
-        theme.id === updatedTheme.id ? updatedTheme : theme
-      )
+    setThemes((prev) =>
+      prev.map((theme) => (theme.id === updatedTheme.id ? updatedTheme : theme))
     );
   };
 
@@ -42,7 +40,6 @@ function App() {
       <ThemeForm onAddTheme={handleAddTheme} />
 
       {/* Show theme list */}
-      {/* <ThemeCreator themes={themes} /> */}
       <ThemeCreator
         themes={themes}
         onAddTheme={handleAddTheme}

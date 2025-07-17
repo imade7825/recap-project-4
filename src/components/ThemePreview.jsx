@@ -1,7 +1,7 @@
 import { IconArrowUp, IconArrowDown } from "@tabler/icons-react";
 import "../styles/ThemePreview.css";
 import ThemeCreator from "./ThemeCreator";
-const ThemePreview = ({ theme, isExpanded, onToggle }) => {
+const ThemePreview = ({ theme, isExpanded,onToggle }) => {
   return (
     <div className="them-preview">
       {/* Name and Toggle */}
@@ -10,9 +10,9 @@ const ThemePreview = ({ theme, isExpanded, onToggle }) => {
 
         <span className="theme-toggle-raw" onClick={onToggle}>
           {isExpanded ? (
-            <IconArrowDown color="green" size={32} />
+            <IconArrowUp color="green" size={32} />
           ) : (
-            <IconArrowUp color="red" size={32} />
+            <IconArrowDown color="red" size={32} />
           )}
         </span>
       </div>
